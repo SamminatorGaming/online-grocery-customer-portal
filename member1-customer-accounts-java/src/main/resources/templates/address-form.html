@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${formTitle}">Address</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<main class="card">
+    <h1 th:text="${formTitle}">Address</h1>
+
+    <p class="error" th:if="${error}" th:text="${error}"></p>
+
+    <form th:action="${formAction}" method="post">
+        <label for="street">Street</label>
+        <input id="street" name="street" type="text" th:value="${address.street}" required>
+
+        <label for="city">City</label>
+        <input id="city" name="city" type="text" th:value="${address.city}" required>
+
+        <label for="state">State</label>
+        <input id="state" name="state" type="text" th:value="${address.state}" required>
+
+        <label for="zipCode">Zip code</label>
+        <input id="zipCode" name="zipCode" type="text" th:value="${address.zipCode}" required>
+
+        <button type="submit">Save address</button>
+    </form>
+
+    <p><a href="/profile">Back to profile</a></p>
+</main>
+</body>
+</html>

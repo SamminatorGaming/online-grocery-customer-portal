@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<main class="wide-card">
+    <div class="top-row">
+        <div>
+            <h1>Customer profile</h1>
+            <p th:text="${customer.name}"></p>
+            <p th:text="${customer.email}"></p>
+        </div>
+
+        <form action="/logout" method="post">
+            <button type="submit" class="secondary">Log out</button>
+        </form>
+    </div>
+
+    <section>
+        <h2>Delivery addresses</h2>
+        <p th:if="${#lists.isEmpty(addresses)}">No addresses saved.</p>
+
+        <div class="address" th:each="address : ${addresses}">
+            <p th:text="${address.street}"></p>
+            <p>
+                <span th:text="${address.city}"></span>,
+                <span th:text="${address.state}"></span>
+                <span th:text="${address.zipCode}"></span>
+            </p>
+            <a th:href="@{'/addresses/' + ${address.addressId} + '/edit'}">Edit</a>
+        </div>
+
+        <a class="button-link" href="/addresses/new">Add address</a>
+    </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,10 @@
+target/
+*.class
+*.log
+.h2.server.properties
+.idea/
+.project
+.classpath
+.settings/
+.vscode/settings.json
+.DS_Store
