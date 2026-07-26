@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<main class="wide-card">
+    <div class="top-row">
+        <div>
+            <h1>Shopping cart</h1>
+            <a href="/profile">Back to profile</a>
+        </div>
+    </div>
+
+    <p class="error" th:if="${error}" th:text="${error}"></p>
+    <p class="success" th:if="${success}" th:text="${success}"></p>
+
+    <section>
+        <h2>Available products</h2>
+        <div class="product-row" th:each="product : ${products}">
+            <div>
+                <strong th:text="${product.name}"></strong>
+                <span th:text="${product.description}"></span>
+                <span th:text="${' $' + #numbers.formatDecimal(product.price, 1, 2)}"></span>
+                <span th:text="${' (' + product.quantityAvailable + ' available)'}"></span>
+            </div>
+            <form action="/cart/items" method="post" class="inline-form">
+                <input type="hidden" name="productId" th:value="${product.productId}">
+                <input type="number" name="quantity" value="1" min="1"
+                       th:max="${product.quantityAvailable}" aria-label="Quantity">
+                <button type="submit" th:disabled="${!product.available}">Add to cart</button>
+            </form>
+        </div>
+    </section>
+
+    <section>
+        <h2>Your items</h2>
+        <p th:if="${#lists.isEmpty(cart.items)}">Your cart is empty.</p>
+
+        <div class="cart-row" th:each="item : ${cart.items}">
+            <div>
+                <strong th:text="${item.product.name}"></strong>
+                <span th:text="${' at $' + #numbers.formatDecimal(item.itemPrice, 1, 2) + ' each'}"></span>
+                <p th:text="${'Line total: $' + #numbers.formatDecimal(item.calculateLineTotal(), 1, 2)}"></p>
+            </div>
+            <form th:action="@{'/cart/items/' + ${item.cartItemId} + '/quantity'}" method="post" class="inline-form">
+                <input type="number" name="quantity" min="1"
+                       th:max="${item.product.quantityAvailable}" th:value="${item.quantity}">
+                <button type="submit">Update</button>
+            </form>
+            <form th:action="@{'/cart/items/' + ${item.cartItemId} + '/remove'}" method="post">
+                <button type="submit" class="secondary">Remove</button>
+            </form>
+        </div>
+
+        <h3 th:text="${'Subtotal: $' + #numbers.formatDecimal(subtotal, 1, 2)}"></h3>
+        <form action="/cart/clear" method="post" th:if="${!#lists.isEmpty(cart.items)}">
+            <button type="submit" class="secondary">Clear cart</button>
+        </form>
+    </section>
+</main>
+</body>
+</html>
