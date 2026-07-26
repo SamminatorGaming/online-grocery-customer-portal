@@ -26,13 +26,13 @@ Status options:
 | B-12 | Remove item from cart | Customer can remove a product from the cart. | Member 3 | High | Done |
 | B-13 | Update cart quantity | Customer can change the quantity of an item in the cart. | Member 3 | High | Done |
 | B-14 | View cart | Customer can view cart items, quantities, prices, and subtotal. | Member 3 | High | Done |
-| B-15 | Apply discount code | Customer can enter a discount code during checkout. | Member 4 | Medium | Not Started |
-| B-16 | Calculate tax | System calculates 8.25% tax during checkout. | Member 4 | High | Not Started |
-| B-17 | Choose delivery option | Customer can choose a delivery type. | Member 4 | High | Not Started |
-| B-18 | Review order summary | Customer can see subtotal, tax, discount, delivery fee, and final total before ordering. | Member 4 | High | Not Started |
-| B-19 | Place order | Customer can place an order without real payment processing. | Member 4 | High | Not Started |
-| B-20 | View order history | Customer can view previous orders. | Member 4 | Medium | Not Started |
-| B-21 | Sort order history | Customer can sort previous orders by date or total amount. | Member 4 | Low | Not Started |
+| B-15 | Apply discount code | Customer can enter a discount code during checkout. | Member 4 | Medium | In Progress |
+| B-16 | Calculate tax | System calculates 8.25% tax during checkout. | Member 4 | High | In Progress |
+| B-17 | Choose delivery option | Customer can choose a delivery type. | Member 4 | High | In Progress |
+| B-18 | Review order summary | Customer can see subtotal, tax, discount, delivery fee, and final total before ordering. | Member 4 | High | In Progress |
+| B-19 | Place order | Customer can place an order without real payment processing. | Member 4 | High | In Progress |
+| B-20 | View order history | Customer can view previous orders. | Member 4 | Medium | In Progress |
+| B-21 | Sort order history | Customer can sort previous orders by date or total amount. | Member 4 | Low | In Progress |
 | B-22 | Unit tests | Each member writes tests for their own features. | All Members | High | In Progress |
 | B-23 | Final bug fixes | Team fixes errors before the demo. | All Members | High | Not Started |
 | B-24 | Presentation prep | Each member prepares their demo section. | All Members | High | Not Started |
