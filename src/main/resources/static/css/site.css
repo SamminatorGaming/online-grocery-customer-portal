@@ -97,3 +97,10 @@ button,
 .inline-form button,.cart-row button {
     margin-top: 0;
 }
+
+.product-thumb {
+    border-radius: 4px;
+    height: 48px;
+    object-fit: cover;
+    width: 48px;
+}

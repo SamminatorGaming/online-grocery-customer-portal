@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<main class="wide-card">
+    <div class="top-row">
+        <div>
+            <h1>Products</h1>
+        </div>
+        <a class="button-link secondary" href="/cart">View shopping cart</a>
+    </div>
+
+    <form action="/products" method="get" class="inline-form">
+        <input type="text" name="keyword" placeholder="Search by name or description" th:value="${keyword}">
+        <button type="submit">Search</button>
+    </form>
+
+    <p>
+        Sort by:
+        <a th:href="@{/products(sort='price_asc')}">Price: low to high</a>
+        &middot;
+        <a th:href="@{/products(sort='price_desc')}">Price: high to low</a>
+        &middot;
+        <a th:href="@{/products(sort='availability')}">Availability</a>
+        &middot;
+        <a th:href="@{/products}">Clear</a>
+    </p>
+
+    <section>
+        <p th:if="${#lists.isEmpty(products)}">No products found.</p>
+
+        <div class="product-row" th:each="product : ${products}">
+            <img class="product-thumb" th:if="${product.imageUrl != null and !product.imageUrl.isEmpty()}"
+                 th:src="${product.imageUrl}" alt="">
+            <div>
+                <strong th:text="${product.name}"></strong>
+                <span th:text="${product.description}"></span>
+                <span th:text="${' $' + #numbers.formatDecimal(product.price, 1, 2)}"></span>
+                <span th:if="${product.available}"
+                      th:text="${' (' + product.quantityAvailable + ' available)'}"></span>
+                <span class="error" th:unless="${product.available}">Out of stock</span>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>
