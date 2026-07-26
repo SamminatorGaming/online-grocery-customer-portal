@@ -2,6 +2,9 @@ target/
 *.class
 *.log
 .h2.server.properties
+data/
+*.mv.db
+*.trace.db
 .idea/
 .project
 .classpath
