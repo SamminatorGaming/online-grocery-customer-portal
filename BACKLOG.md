@@ -22,10 +22,10 @@ Status options:
 | B-8 | Search products | Customer can search products by name or description. | Member 2 | High | Not Started |
 | B-9 | Sort products by price | Customer can sort products from low to high or high to low price. | Member 2 | Medium | Not Started |
 | B-10 | Sort products by availability | Customer can sort products so available items appear first. | Member 2 | Medium | Not Started |
-| B-11 | Add item to cart | Customer can add a product to the shopping cart. | Member 3 | High | Not Started |
-| B-12 | Remove item from cart | Customer can remove a product from the cart. | Member 3 | High | Not Started |
-| B-13 | Update cart quantity | Customer can change the quantity of an item in the cart. | Member 3 | High | Not Started |
-| B-14 | View cart | Customer can view cart items, quantities, prices, and subtotal. | Member 3 | High | Not Started |
+| B-11 | Add item to cart | Customer can add a product to the shopping cart. | Member 3 | High | Done |
+| B-12 | Remove item from cart | Customer can remove a product from the cart. | Member 3 | High | Done |
+| B-13 | Update cart quantity | Customer can change the quantity of an item in the cart. | Member 3 | High | Done |
+| B-14 | View cart | Customer can view cart items, quantities, prices, and subtotal. | Member 3 | High | Done |
 | B-15 | Apply discount code | Customer can enter a discount code during checkout. | Member 4 | Medium | Not Started |
 | B-16 | Calculate tax | System calculates 8.25% tax during checkout. | Member 4 | High | Not Started |
 | B-17 | Choose delivery option | Customer can choose a delivery type. | Member 4 | High | Not Started |
