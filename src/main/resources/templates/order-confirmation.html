@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmed</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<main class="wide-card">
+    <div class="top-row">
+        <div>
+            <h1>Order placed</h1>
+            <a href="/orders">View all orders</a>
+        </div>
+    </div>
+
+    <section>
+        <p><strong>Order number: </strong><span th:text="${order.orderId}"></span></p>
+        <p><strong>Date: </strong><span th:text="${order.orderDate}"></span></p>
+        <p><strong>Status: </strong><span th:text="${order.status}"></span></p>
+        <p><strong>Delivery: </strong>
+            <span th:text="${order.deliveryOption.type + ' (' + order.deliveryOption.estimatedTime + ')'}"></span>
+        </p>
+        <p><strong>Ship to: </strong>
+            <span th:text="${order.address.street + ', ' + order.address.city + ', ' + order.address.state + ' ' + order.address.zipCode}"></span>
+        </p>
+    </section>
+
+    <section>
+        <h2>Items</h2>
+        <div class="cart-row" th:each="item : ${order.orderItems}">
+            <div>
+                <strong th:text="${item.product.name}"></strong>
+                <span th:text="${' x' + item.quantity}"></span>
+                <span th:text="${' — $' + #numbers.formatDecimal(item.calculateLineTotal(), 1, 2)}"></span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Price breakdown</h2>
+        <p th:text="${'Subtotal: $' + #numbers.formatDecimal(order.subtotal, 1, 2)}"></p>
+        <p th:if="${order.discount.compareTo(T(java.math.BigDecimal).ZERO) > 0}"
+           th:text="${'Discount: -$' + #numbers.formatDecimal(order.discount, 1, 2)}"></p>
+        <p th:text="${'Tax (8.25%): $' + #numbers.formatDecimal(order.tax, 1, 2)}"></p>
+        <p th:text="${'Delivery fee: $' + #numbers.formatDecimal(order.deliveryFee, 1, 2)}"></p>
+        <h3 th:text="${'Total: $' + #numbers.formatDecimal(order.total, 1, 2)}"></h3>
+    </section>
+
+    <a href="/products">Continue shopping</a>
+</main>
+</body>
+</html>

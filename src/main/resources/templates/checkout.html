@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<main class="wide-card">
+    <div class="top-row">
+        <div>
+            <h1>Checkout</h1>
+            <a href="/cart">Back to cart</a>
+        </div>
+    </div>
+
+    <p class="error"  th:if="${error}"          th:text="${error}"></p>
+    <p class="error"  th:if="${discountError}"   th:text="${discountError}"></p>
+    <p class="success" th:if="${discountSuccess}" th:text="${discountSuccess}"></p>
+
+    <section>
+        <h2>Order summary</h2>
+        <div class="cart-row" th:each="item : ${cart.items}">
+            <div>
+                <strong th:text="${item.product.name}"></strong>
+                <span th:text="${' x' + item.quantity}"></span>
+                <span th:text="${' — $' + #numbers.formatDecimal(item.calculateLineTotal(), 1, 2)}"></span>
+            </div>
+        </div>
+        <p th:text="${'Subtotal: $' + #numbers.formatDecimal(subtotal, 1, 2)}"></p>
+        <p th:if="${discount.compareTo(T(java.math.BigDecimal).ZERO) > 0}"
+           th:text="${'Discount: -$' + #numbers.formatDecimal(discount, 1, 2)}"></p>
+        <p th:text="${'Tax (8.25%): $' + #numbers.formatDecimal(tax, 1, 2)}"></p>
+    </section>
+
+    <section>
+        <h2>Discount code</h2>
+        <p th:if="${appliedCode != null}" th:text="${'Applied: ' + appliedCode}"></p>
+        <form action="/checkout/apply-discount" method="post" class="inline-form">
+            <input type="text" name="discountCode" placeholder="Enter code" th:value="${appliedCode}">
+            <button type="submit">Apply</button>
+        </form>
+    </section>
+
+    <form action="/checkout/place-order" method="post" id="place-order-form">
+
+        <section>
+            <h2>Delivery address</h2>
+            <p th:if="${#lists.isEmpty(addresses)}">
+                No addresses saved. <a href="/profile">Add one in your profile.</a>
+            </p>
+            <div th:each="addr : ${addresses}">
+                <label>
+                    <input type="radio" name="addressId" th:value="${addr.addressId}" required>
+                    <span th:text="${addr.street + ', ' + addr.city + ', ' + addr.state + ' ' + addr.zipCode}"></span>
+                </label>
+            </div>
+        </section>
+
+        <section>
+            <h2>Delivery option</h2>
+            <div th:each="opt : ${deliveryOptions}">
+                <label>
+                    <input type="radio" name="deliveryOptionId" th:value="${opt.deliveryOptionId}" required>
+                    <span th:text="${opt.type + ' — $' + #numbers.formatDecimal(opt.fee, 1, 2) + ' (' + opt.estimatedTime + ')'}"></span>
+                </label>
+            </div>
+        </section>
+
+        <button type="submit">Place order</button>
+    </form>
+</main>
+</body>
+</html>
