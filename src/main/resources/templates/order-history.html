@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order History</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<main class="wide-card">
+    <div class="top-row">
+        <div>
+            <h1>Order history</h1>
+            <a href="/profile">Back to profile</a>
+        </div>
+    </div>
+
+    <section>
+        <div class="inline-form">
+            <span>Sort by: </span>
+            <a th:href="@{/orders}"                th:classappend="${sort == null}         ? ' active' : ''">Newest</a>
+            <a th:href="@{/orders(sort='date_asc')}"  th:classappend="${sort == 'date_asc'}   ? ' active' : ''">Oldest</a>
+            <a th:href="@{/orders(sort='total_desc')}" th:classappend="${sort == 'total_desc'}  ? ' active' : ''">Highest total</a>
+            <a th:href="@{/orders(sort='total_asc')}"  th:classappend="${sort == 'total_asc'}   ? ' active' : ''">Lowest total</a>
+        </div>
+    </section>
+
+    <p th:if="${#lists.isEmpty(orders)}">You have not placed any orders yet.</p>
+
+    <section th:each="order : ${orders}" class="cart-row">
+        <div>
+            <strong th:text="${'Order #' + order.orderId}"></strong>
+            <span th:text="${' — ' + order.orderDate}"></span>
+            <span th:text="${' — ' + order.status}"></span>
+            <p th:text="${order.deliveryOption.type + ' to ' + order.address.city + ', ' + order.address.state}"></p>
+            <p>
+                <span th:each="item,iter : ${order.orderItems}"
+                      th:text="${item.product.name + (iter.last ? '' : ', ')}"></span>
+            </p>
+        </div>
+        <div>
+            <strong th:text="${'$' + #numbers.formatDecimal(order.total, 1, 2)}"></strong>
+        </div>
+    </section>
+</main>
+</body>
+</html>
