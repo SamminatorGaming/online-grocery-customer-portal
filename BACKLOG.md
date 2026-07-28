@@ -18,10 +18,10 @@ Status options:
 | B-4 | Customer profile | Customer can view their name, email, and saved addresses. | Member 1 | Medium | Done |
 | B-5 | Add address | Customer can add a delivery address. | Member 1 | High | Done |
 | B-6 | Edit address | Customer can edit a saved delivery address. | Member 1 | Medium | Done |
-| B-7 | View products | Customer can view grocery items with name, picture, price, and availability. | Member 2 | High | Not Started |
-| B-8 | Search products | Customer can search products by name or description. | Member 2 | High | Not Started |
-| B-9 | Sort products by price | Customer can sort products from low to high or high to low price. | Member 2 | Medium | Not Started |
-| B-10 | Sort products by availability | Customer can sort products so available items appear first. | Member 2 | Medium | Not Started |
+| B-7 | View products | Customer can view grocery items with name, picture, price, and availability. | Member 2 | High | Done |
+| B-8 | Search products | Customer can search products by name or description. | Member 2 | High | Done |
+| B-9 | Sort products by price | Customer can sort products from low to high or high to low price. | Member 2 | Medium | Done |
+| B-10 | Sort products by availability | Customer can sort products so available items appear first. | Member 2 | Medium | Done |
 | B-11 | Add item to cart | Customer can add a product to the shopping cart. | Member 3 | High | Done |
 | B-12 | Remove item from cart | Customer can remove a product from the cart. | Member 3 | High | Done |
 | B-13 | Update cart quantity | Customer can change the quantity of an item in the cart. | Member 3 | High | Done |
