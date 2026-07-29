@@ -18,10 +18,10 @@ Status options:
 | B-4 | Customer profile | Customer can view their name, email, and saved addresses. | Member 1 | Medium | Done |
 | B-5 | Add address | Customer can add a delivery address. | Member 1 | High | Done |
 | B-6 | Edit address | Customer can edit a saved delivery address. | Member 1 | Medium | Done |
-| B-7 | View products | Customer can view grocery items with name, picture, price, and availability. | Member 2 | High | Not Started |
-| B-8 | Search products | Customer can search products by name or description. | Member 2 | High | Not Started |
-| B-9 | Sort products by price | Customer can sort products from low to high or high to low price. | Member 2 | Medium | Not Started |
-| B-10 | Sort products by availability | Customer can sort products so available items appear first. | Member 2 | Medium | Not Started |
+| B-7 | View products | Customer can view grocery items with name, picture, price, and availability. | Member 2 | High | Done |
+| B-8 | Search products | Customer can search products by name or description. | Member 2 | High | Done |
+| B-9 | Sort products by price | Customer can sort products from low to high or high to low price. | Member 2 | Medium | Done |
+| B-10 | Sort products by availability | Customer can sort products so available items appear first. | Member 2 | Medium | Done |
 | B-11 | Add item to cart | Customer can add a product to the shopping cart. | Member 3 | High | Done |
 | B-12 | Remove item from cart | Customer can remove a product from the cart. | Member 3 | High | Done |
 | B-13 | Update cart quantity | Customer can change the quantity of an item in the cart. | Member 3 | High | Done |
@@ -31,8 +31,8 @@ Status options:
 | B-17 | Choose delivery option | Customer can choose a delivery type. | Member 4 | High | Done |
 | B-18 | Review order summary | Customer can see subtotal, tax, discount, delivery fee, and final total before ordering. | Member 4 | High | Done |
 | B-19 | Place order | Customer can place an order without real payment processing. | Member 4 | High | Done |
-| B-20 | View order history | Customer can view previous orders. | Member 4 | Medium | In Progress |
-| B-21 | Sort order history | Customer can sort previous orders by date or total amount. | Member 4 | Low | In Progress |
+| B-20 | View order history | Customer can view previous orders. | Member 4 | Medium | Done |
+| B-21 | Sort order history | Customer can sort previous orders by date or total amount. | Member 4 | Low | Done |
 | B-22 | Unit tests | Each member writes tests for their own features. | All Members | High | In Progress |
 | B-23 | Final bug fixes | Team fixes errors before the demo. | All Members | High | Not Started |
 | B-24 | Presentation prep | Each member prepares their demo section. | All Members | High | Not Started |
