@@ -61,14 +61,34 @@
             <h2>Delivery option</h2>
             <div th:each="opt : ${deliveryOptions}">
                 <label>
-                    <input type="radio" name="deliveryOptionId" th:value="${opt.deliveryOptionId}" required>
+                    <input type="radio" name="deliveryOptionId" th:value="${opt.deliveryOptionId}" th:data-fee="${opt.fee}" onchange="updateTotal()" required>
                     <span th:text="${opt.type + ' — $' + #numbers.formatDecimal(opt.fee, 1, 2) + ' (' + opt.estimatedTime + ')'}"></span>
                 </label>
             </div>
         </section>
 
+        <h3 id="total-display" style="margin-top: 1.5rem; margin-bottom: 1rem;">Total: Select delivery option</h3>
         <button type="submit">Place order</button>
     </form>
+    
+    <script th:inline="javascript">
+        function updateTotal() {
+            var subtotal = /*[[${subtotal}]]*/ 0;
+            var discount = /*[[${discount}]]*/ 0;
+            var tax = /*[[${tax}]]*/ 0;
+            var baseTotal = subtotal - discount + tax;
+            
+            var selectedRadio = document.querySelector('input[name="deliveryOptionId"]:checked');
+            if (selectedRadio) {
+                var fee = parseFloat(selectedRadio.getAttribute('data-fee'));
+                var total = baseTotal + fee;
+                document.getElementById('total-display').innerText = 'Total: $' + total.toFixed(2);
+            }
+        }
+        
+        // Run once on load in case a radio is pre-selected by browser history
+        window.addEventListener('DOMContentLoaded', updateTotal);
+    </script>
 </main>
 </body>
 </html>

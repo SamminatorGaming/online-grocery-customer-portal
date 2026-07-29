@@ -56,9 +56,12 @@
         </div>
 
         <h3 th:text="${'Subtotal: $' + #numbers.formatDecimal(subtotal, 1, 2)}"></h3>
-        <form action="/cart/clear" method="post" th:if="${!#lists.isEmpty(cart.items)}">
-            <button type="submit" class="secondary">Clear cart</button>
-        </form>
+        <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem;" th:if="${!#lists.isEmpty(cart.items)}">
+            <a href="/checkout" class="button-link secondary">Proceed to checkout</a>
+            <form action="/cart/clear" method="post" style="margin: 0;">
+                <button type="submit" class="secondary">Clear cart</button>
+            </form>
+        </div>
     </section>
 </main>
 </body>
